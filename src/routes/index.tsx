@@ -196,7 +196,7 @@ const QA = [
 function Voice() {
   const [state, setState] = useState<"idle" | "listen" | "answer">("idle");
   const [typed, setTyped] = useState("");
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => {
     if (state === "listen") timer.current = setTimeout(() => setState("answer"), 2200);
     if (state === "answer") {
