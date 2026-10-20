@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   Phone, Mic, Package, Zap, Check, ShieldCheck, ArrowRight, Code2, Upload, TrendingUp, PhoneIncoming, Truck, AudioLines,
 } from "lucide-react";
-import watch from "@/assets/watch.jpg";
+import product from "@/assets/product.jpg";
 
 const TITLE = "Vocallis — AI Voice Sales & 60-Second Callbacks for E-Commerce";
 const DESC = "Replace text chatbots with a human-like AI voice sales rep that answers questions, tracks orders, and calls back hot leads in under 60 seconds.";
@@ -35,8 +35,8 @@ function Logo() {
 
 function Btn({ children, variant = "primary", className = "", ...p }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "ghost" }) {
   const v = variant === "primary"
-    ? "bg-primary text-primary-foreground hover:brightness-110 shadow-[0_0_30px_-8px_var(--primary)]"
-    : "border border-input bg-secondary/50 text-foreground hover:bg-secondary";
+    ? "bg-primary text-primary-foreground hover:brightness-110 shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--primary)_55%,transparent)]"
+    : "border border-input bg-background text-foreground hover:bg-secondary";
   return (
     <button {...p} className={`inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-all active:scale-[0.98] ${v} ${className}`}>
       {children}
@@ -75,16 +75,18 @@ function Index() {
 
 function Hero() {
   return (
-    <section className="relative">
-      <div className="grid-bg pointer-events-none absolute inset-0" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
+    <section className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 left-1/4 h-[420px] w-[620px] -translate-x-1/2 rounded-full bg-primary/10 blur-[110px]" />
+        <div className="absolute right-[8%] top-40 h-[320px] w-[420px] rounded-full bg-accent/15 blur-[100px]" />
+      </div>
       <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <span className="inline-flex items-center gap-2 rounded-full border bg-secondary/60 px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-muted-foreground">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+        <span className="inline-flex items-center gap-2 rounded-full border bg-card px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-muted-foreground soft-shadow">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
           THE #1 VOICE AI CONVERSION ENGINE FOR MODERN STORES
         </span>
         <h1 className="mt-8 text-4xl font-bold leading-[1.05] md:text-7xl">
-          Call Back Every Lead in <span className="text-primary">60 Seconds</span> & Close Sales on Autopilot.
+          Call Back Every Lead in <span className="relative whitespace-nowrap text-primary">60 Seconds</span> & Close Sales on Autopilot.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
           Replace lifeless text chatbots. When a high-intent shopper leaves their number or asks a question, Vocallis AI calls them in under 60 seconds to answer questions, recommend products, and close the order.
@@ -93,7 +95,15 @@ function Hero() {
           <Btn className="px-7 py-4 text-base">Start 14-Day Free Trial <ArrowRight className="h-4 w-4" /></Btn>
           <a href="#demo"><Btn variant="ghost" className="w-full px-7 py-4 text-base"><Mic className="h-4 w-4" /> Try Interactive Voice Demo</Btn></a>
         </div>
-        <p className="mt-16 text-sm text-muted-foreground">Works seamlessly with Shopify, WooCommerce, Webflow, and Custom Stores</p>
+        <div className="mx-auto mt-12 flex max-w-3xl flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm text-muted-foreground">
+          {[["2,300+", "stores onboard"], ["38%", "avg. conversion lift"], ["45s", "avg. callback time"]].map(([n, l]) => (
+            <div key={l} className="flex items-baseline gap-2">
+              <span className="font-display text-2xl font-bold text-foreground">{n}</span>
+              <span>{l}</span>
+            </div>
+          ))}
+        </div>
+        <p className="mt-12 text-sm text-muted-foreground">Works seamlessly with Shopify, WooCommerce, Webflow, and Custom Stores</p>
         <div className="mt-5 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 font-display text-xl font-semibold text-muted-foreground/70">
           <span>shopify</span><span>WooCommerce</span><span>Webflow</span><span className="flex items-center gap-2"><Code2 className="h-5 w-5" />Custom</span>
         </div>
@@ -119,25 +129,25 @@ function Demo() {
       <div className="mt-10 flex flex-wrap justify-center gap-2">
         {TABS.map((t) => (
           <button key={t.id} onClick={() => setTab(t.id)}
-            className={`flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all ${tab === t.id ? "border-primary bg-primary text-primary-foreground" : "bg-secondary/40 text-muted-foreground hover:text-foreground"}`}>
+            className={`flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all ${tab === t.id ? "border-primary bg-primary text-primary-foreground soft-shadow" : "bg-card text-muted-foreground hover:text-foreground"}`}>
             <t.icon className="h-4 w-4" />{t.label}
           </button>
         ))}
       </div>
-      <div className="mt-8 overflow-hidden rounded-2xl border bg-card shadow-2xl">
+      <div className="mt-8 overflow-hidden rounded-2xl border bg-card soft-shadow">
         <div className="flex items-center gap-2 border-b px-4 py-3">
-          <span className="h-3 w-3 rounded-full bg-destructive/70" /><span className="h-3 w-3 rounded-full bg-muted-foreground/40" /><span className="h-3 w-3 rounded-full bg-success/70" />
-          <span className="ml-4 rounded-md bg-muted px-3 py-1 text-xs text-muted-foreground">aurelia-watches.com/products/meridian-chrono</span>
+          <span className="h-3 w-3 rounded-full bg-destructive/60" /><span className="h-3 w-3 rounded-full bg-muted-foreground/30" /><span className="h-3 w-3 rounded-full bg-success/70" />
+          <span className="ml-4 rounded-md bg-muted px-3 py-1 text-xs text-muted-foreground">yourstore.com/products/nova-buds</span>
         </div>
         <div className="grid md:grid-cols-2">
           <div className="p-8">
-            <img src={watch} alt="Meridian Chronograph luxury watch" width={1024} height={1024} loading="lazy" className="aspect-square w-full rounded-xl object-cover" />
+            <img src={product} alt="Nova Buds Pro wireless earbuds" width={1024} height={1024} loading="lazy" className="aspect-square w-full rounded-xl bg-muted object-cover" />
           </div>
           <div className="flex flex-col p-8 md:pl-0">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">Aurelia Watches</p>
-            <h3 className="mt-2 text-3xl font-bold">Meridian Chronograph</h3>
-            <p className="mt-2 text-2xl text-primary">$1,890</p>
-            <p className="mt-3 text-sm text-muted-foreground">Sapphire crystal, 42mm brushed steel case, Swiss automatic movement, 100m water resistance.</p>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">YourStore · Best Seller</p>
+            <h3 className="mt-2 text-3xl font-bold">Nova Buds Pro</h3>
+            <p className="mt-2 text-2xl font-semibold text-primary">$249</p>
+            <p className="mt-3 text-sm text-muted-foreground">30-hour battery life, active noise cancelling, multipoint Bluetooth — this season's best-selling pair.</p>
             <div className="mt-6 flex-1 rounded-xl border bg-background p-5">
               <div className="mb-4 flex items-center gap-2 text-xs font-semibold text-muted-foreground">
                 <span className="h-2 w-2 rounded-full bg-success" /> Vocallis AI · Online
@@ -180,7 +190,7 @@ function Callback() {
       ) : (
         <>
           <div className="ring-pulse grid h-16 w-16 place-items-center rounded-full bg-primary text-primary-foreground"><PhoneIncoming className="h-7 w-7" /></div>
-          <p className="mt-4 font-semibold">Incoming call · Aurelia Watches</p>
+          <p className="mt-4 font-semibold">Incoming call · Your Store</p>
           <p className="text-sm text-muted-foreground">Connected in {60 - 45} seconds — while shopper is still on page</p>
           <button onClick={() => setT(null)} className="mt-4 text-xs text-muted-foreground underline">Reset demo</button>
         </>
@@ -190,7 +200,7 @@ function Callback() {
 }
 
 const QA = [
-  { q: "Will the 42mm fit a smaller wrist, around 6.5 inches?", a: "Great question! The Meridian's lug-to-lug is 48mm, so it sits comfortably on a 6.5\" wrist. I'd also suggest the leather strap — it tapers nicely. Want me to apply 10% off for first-time buyers?" },
+  { q: "How long does the battery last — and do you ship to Canada?", a: "Great question! You get 8 hours per charge and 30 hours with the case. We ship to Canada free on orders over $75, arriving in 2–4 business days. Want me to apply 10% off for first-time customers?" },
 ];
 
 function Voice() {
@@ -218,11 +228,11 @@ function Voice() {
           <span key={i} className={`w-1 rounded-full bg-accent ${state === "idle" ? "h-1" : "wave-bar h-10"}`} style={{ animationDelay: `${(i % 7) * 0.1}s` }} />
         ))}
       </div>
-      {state === "idle" && <p className="text-sm text-muted-foreground">Tap the mic and ask about sizing or specs</p>}
+      {state === "idle" && <p className="text-sm text-muted-foreground">Tap the mic and ask about shipping, sizing, or specs</p>}
       {state !== "idle" && (
         <div className="w-full space-y-3 text-sm">
           <div className="ml-auto max-w-[85%] rounded-lg bg-secondary px-3 py-2">{QA[0]!.q}</div>
-          {state === "answer" && <div className="max-w-[90%] rounded-lg border border-primary/30 bg-primary/10 px-3 py-2">{typed}</div>}
+          {state === "answer" && <div className="max-w-[90%] rounded-lg border border-primary/25 bg-primary/5 px-3 py-2">{typed}</div>}
         </div>
       )}
     </div>
@@ -238,12 +248,12 @@ function Order() {
       ) : (
         <>
           <div className="ml-auto max-w-[85%] rounded-lg bg-secondary px-3 py-2">Where is my order #1042?</div>
-          <div className="animate-in fade-in slide-in-from-bottom-2 rounded-lg border border-primary/30 bg-primary/10 p-4">
-            <div className="flex items-center gap-2 font-semibold"><Truck className="h-4 w-4 text-primary" /> Order #1042 · Out for delivery</div>
+          <div className="animate-in fade-in slide-in-from-bottom-2 rounded-lg border border-success/30 bg-success/5 p-4">
+            <div className="flex items-center gap-2 font-semibold"><Truck className="h-4 w-4 text-success" /> Order #1042 · Out for delivery</div>
             <p className="mt-1 text-muted-foreground">UPS 1Z999AA10123456784 · Arriving <b className="text-foreground">today by 6:00 PM</b></p>
             <div className="mt-3 flex gap-1">
               {["Ordered", "Shipped", "Out for delivery", "Delivered"].map((s, i) => (
-                <div key={s} className="flex-1"><div className={`h-1.5 rounded-full ${i < 3 ? "bg-primary" : "bg-muted"}`} /><p className="mt-1 text-[10px] text-muted-foreground">{s}</p></div>
+                <div key={s} className="flex-1"><div className={`h-1.5 rounded-full ${i < 3 ? "bg-success" : "bg-muted"}`} /><p className="mt-1 text-[10px] text-muted-foreground">{s}</p></div>
               ))}
             </div>
           </div>
@@ -265,7 +275,7 @@ function Features() {
       <h2 className="max-w-2xl text-3xl font-bold md:text-5xl">Three pillars that turn browsers into buyers.</h2>
       <div className="mt-12 grid gap-5 md:grid-cols-3">
         {items.map((f) => (
-          <div key={f.t} className="group rounded-2xl border bg-card p-8 transition-all hover:-translate-y-1 hover:border-primary/40">
+          <div key={f.t} className="group rounded-2xl border bg-card p-8 transition-all hover:-translate-y-1 hover:border-primary/40 soft-shadow">
             <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground"><f.icon className="h-6 w-6" /></div>
             <h3 className="mt-6 text-xl font-semibold">{f.t}</h3>
             <p className="mt-3 text-muted-foreground">{f.d}</p>
@@ -283,7 +293,7 @@ function How() {
     { icon: TrendingUp, t: "Watch conversions jump", d: "Visitor-to-buyer conversion up by 35%+." },
   ];
   return (
-    <section id="how" className="scroll-mt-20 border-y bg-card/40">
+    <section id="how" className="scroll-mt-20 border-y bg-secondary/50">
       <div className="mx-auto max-w-7xl px-6 py-20">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary">How It Works</p>
         <h2 className="mt-3 text-3xl font-bold md:text-5xl">Live in under 10 minutes.</h2>
@@ -291,7 +301,7 @@ function How() {
           {steps.map((s, i) => (
             <div key={s.t}>
               <div className="flex items-center gap-4">
-                <span className="font-display text-5xl font-bold text-primary/30">0{i + 1}</span>
+                <span className="font-display text-5xl font-bold text-primary/25">0{i + 1}</span>
                 <s.icon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="mt-4 text-xl font-semibold">{s.t}</h3>
@@ -299,8 +309,8 @@ function How() {
             </div>
           ))}
         </div>
-        <div className="mt-12 overflow-x-auto rounded-xl border bg-background p-4 font-mono text-sm text-muted-foreground">
-          <span className="text-accent">&lt;script</span> src="https://cdn.vocallis.ai/widget.js" data-store="your-store"<span className="text-accent">&gt;&lt;/script&gt;</span>
+        <div className="mt-12 overflow-x-auto rounded-xl border bg-card p-4 font-mono text-sm text-muted-foreground soft-shadow">
+          <span className="text-primary">&lt;script</span> src="https://cdn.vocallis.ai/widget.js" data-store="your-store"<span className="text-primary">&gt;&lt;/script&gt;</span>
         </div>
       </div>
     </section>
@@ -321,12 +331,12 @@ function Pricing() {
       </div>
       <div className="mt-12 grid gap-5 md:grid-cols-3">
         {plans.map((pl) => (
-          <div key={pl.n} className={`relative flex flex-col rounded-2xl border p-8 ${pl.pop ? "border-primary bg-card shadow-[0_0_60px_-20px_var(--primary)] md:-translate-y-3" : "bg-card/60"}`}>
+          <div key={pl.n} className={`relative flex flex-col rounded-2xl border p-8 ${pl.pop ? "border-primary bg-card soft-shadow md:-translate-y-3" : "bg-card/60"}`}>
             {pl.pop && <span className="absolute -top-3 left-8 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">Most Popular</span>}
             <h3 className="text-lg font-semibold">{pl.n}</h3>
             <p className="mt-4"><span className="font-display text-5xl font-bold">${pl.p}</span><span className="text-muted-foreground">/month</span></p>
             <ul className="mt-8 flex-1 space-y-3 text-sm">
-              {pl.f.map((x) => <li key={x} className="flex gap-3"><Check className="h-4 w-4 shrink-0 text-primary" />{x}</li>)}
+              {pl.f.map((x) => <li key={x} className="flex gap-3"><Check className="h-4 w-4 shrink-0 text-success" />{x}</li>)}
             </ul>
             <Btn variant={pl.pop ? "primary" : "ghost"} className="mt-8 w-full">Start Free Trial</Btn>
           </div>
@@ -340,8 +350,9 @@ function FinalCta() {
   const [done, setDone] = useState(false);
   return (
     <section className="mx-auto max-w-7xl px-6 pb-20">
-      <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-card px-8 py-16 text-center">
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[700px] -translate-x-1/2 rounded-full bg-primary/20 blur-[100px]" />
+      <div className="relative overflow-hidden rounded-3xl border bg-card px-8 py-16 text-center soft-shadow">
+        <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[700px] -translate-x-1/2 rounded-full bg-primary/10 blur-[100px]" />
+        <div className="pointer-events-none absolute -bottom-32 right-0 h-64 w-[420px] rounded-full bg-accent/15 blur-[90px]" />
         <h2 className="relative mx-auto max-w-3xl text-3xl font-bold md:text-5xl">Stop Losing 97% of Your Store Visitors. Activate Vocallis Today.</h2>
         <form onSubmit={(e) => { e.preventDefault(); setDone(true); }} className="relative mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row">
           <input required placeholder="Enter your store URL" className="flex-1 rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring" />
@@ -359,7 +370,7 @@ function Footer() {
         <div><Logo /><p className="mt-3 text-sm text-muted-foreground">© 2026 Vocallis. 24/7 AI voice sales for online brands.</p></div>
         <div className="flex flex-wrap gap-3">
           {["GDPR Ready", "CAN-SPAM", "TCPA Compliant Opt-in"].map((b) => (
-            <span key={b} className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs text-muted-foreground"><ShieldCheck className="h-3.5 w-3.5 text-primary" />{b}</span>
+            <span key={b} className="flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-xs text-muted-foreground"><ShieldCheck className="h-3.5 w-3.5 text-success" />{b}</span>
           ))}
         </div>
       </div>
