@@ -36,26 +36,26 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.14 0.01 250);
-  --foreground: oklch(0.97 0.005 250);
-  --card: oklch(0.18 0.012 250);
-  --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.18 0.012 250);
-  --popover-foreground: oklch(0.97 0.005 250);
-  --primary: oklch(0.88 0.2 128);
-  --primary-foreground: oklch(0.16 0.02 130);
-  --secondary: oklch(0.23 0.014 250);
-  --secondary-foreground: oklch(0.97 0.005 250);
-  --muted: oklch(0.22 0.012 250);
-  --muted-foreground: oklch(0.68 0.015 250);
-  --accent: oklch(0.72 0.14 200);
-  --accent-foreground: oklch(0.14 0.01 250);
-  --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --success: oklch(0.78 0.17 150);
-  --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.88 0.2 128);
+  --background: oklch(0.995 0.002 300);
+  --foreground: oklch(0.22 0.02 295);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 295);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 295);
+  --primary: oklch(0.53 0.26 295);
+  --primary-foreground: oklch(0.99 0.005 300);
+  --secondary: oklch(0.955 0.012 300);
+  --secondary-foreground: oklch(0.25 0.02 295);
+  --muted: oklch(0.95 0.008 300);
+  --muted-foreground: oklch(0.52 0.02 295);
+  --accent: oklch(0.74 0.17 158);
+  --accent-foreground: oklch(0.24 0.05 158);
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.74 0.17 158);
+  --border: oklch(0.22 0.02 295 / 10%);
+  --input: oklch(0.22 0.02 295 / 14%);
+  --ring: oklch(0.53 0.26 295);
 }
 
 @layer base {
@@ -69,15 +69,11 @@
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
 }
 
-@utility grid-bg {
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
-}
-
 @keyframes wave { 0%,100% { transform: scaleY(0.3) } 50% { transform: scaleY(1) } }
 @utility wave-bar { animation: wave 0.9s ease-in-out infinite; transform-origin: center; }
-@keyframes ring-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 60%, transparent) } 100% { box-shadow: 0 0 0 22px transparent } }
+@keyframes ring-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 55%, transparent) } 100% { box-shadow: 0 0 0 22px transparent } }
 @utility ring-pulse { animation: ring-pulse 1.4s ease-out infinite; }
+
+@utility soft-shadow {
+  box-shadow: 0 1px 2px oklch(0.22 0.02 295 / 4%), 0 12px 40px -12px oklch(0.22 0.02 295 / 12%);
+}
