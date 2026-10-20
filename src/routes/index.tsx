@@ -201,7 +201,7 @@ function Voice() {
     if (state === "listen") timer.current = setTimeout(() => setState("answer"), 2200);
     if (state === "answer") {
       let i = 0;
-      const id = setInterval(() => { i += 2; setTyped(QA[0].a.slice(0, i)); if (i >= QA[0].a.length) clearInterval(id); }, 20);
+      const id = setInterval(() => { i += 2; setTyped(QA[0]!.a.slice(0, i)); if (i >= QA[0]!.a.length) clearInterval(id); }, 20);
       return () => clearInterval(id);
     }
     return () => clearTimeout(timer.current);
@@ -221,7 +221,7 @@ function Voice() {
       {state === "idle" && <p className="text-sm text-muted-foreground">Tap the mic and ask about sizing or specs</p>}
       {state !== "idle" && (
         <div className="w-full space-y-3 text-sm">
-          <div className="ml-auto max-w-[85%] rounded-lg bg-secondary px-3 py-2">{QA[0].q}</div>
+          <div className="ml-auto max-w-[85%] rounded-lg bg-secondary px-3 py-2">{QA[0]!.q}</div>
           {state === "answer" && <div className="max-w-[90%] rounded-lg border border-primary/30 bg-primary/10 px-3 py-2">{typed}</div>}
         </div>
       )}
