@@ -80,7 +80,7 @@ function Hero() {
         <div className="absolute -top-32 left-1/4 h-[420px] w-[620px] -translate-x-1/2 rounded-full bg-primary/10 blur-[110px]" />
         <div className="absolute right-[8%] top-40 h-[320px] w-[420px] rounded-full bg-accent/15 blur-[100px]" />
       </div>
-      <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-20 text-center md:pt-28">
+      <div className="rise relative mx-auto max-w-5xl px-6 pb-16 pt-20 text-center md:pt-28">
         <span className="inline-flex items-center gap-2 rounded-full border bg-card px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-muted-foreground soft-shadow">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
           THE #1 VOICE AI CONVERSION ENGINE FOR MODERN STORES
@@ -140,8 +140,19 @@ function Demo() {
           <span className="ml-4 rounded-md bg-muted px-3 py-1 text-xs text-muted-foreground">yourstore.com/products/nova-buds</span>
         </div>
         <div className="grid md:grid-cols-2">
-          <div className="p-8">
-            <img src={product} alt="Nova Buds Pro wireless earbuds" width={1024} height={1024} loading="lazy" className="aspect-square w-full rounded-xl bg-muted object-cover" />
+          <div className="relative p-8">
+            <div className="group relative overflow-hidden rounded-xl bg-muted">
+              <div className="pointer-events-none absolute inset-0 z-0 animate-pulse rounded-full bg-primary/10 blur-3xl" />
+              <img src={product} alt="Nova Buds Pro wireless earbuds" width={1024} height={1024} loading="lazy" className="float-y relative aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2" />
+              <div className="shine pointer-events-none absolute inset-0" />
+            </div>
+            <div className="float-y-slow absolute left-4 top-12 flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-xs font-semibold soft-shadow">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-success" /> 128 kişi şu an bakıyor
+            </div>
+            <div className="float-y absolute bottom-12 right-4 rounded-xl border bg-card px-3 py-2 text-xs soft-shadow" style={{ animationDelay: "1s" }}>
+              <p className="font-semibold text-primary">⚡ 45sn'de arandı</p>
+              <p className="text-muted-foreground">+3 sipariş · son 1 saat</p>
+            </div>
           </div>
           <div className="flex flex-col p-8 md:pl-0">
             <p className="text-xs uppercase tracking-widest text-muted-foreground">YourStore · Best Seller</p>
