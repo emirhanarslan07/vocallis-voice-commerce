@@ -73,6 +73,16 @@
 @utility wave-bar { animation: wave 0.9s ease-in-out infinite; transform-origin: center; }
 @keyframes ring-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 55%, transparent) } 100% { box-shadow: 0 0 0 22px transparent } }
 @utility ring-pulse { animation: ring-pulse 1.4s ease-out infinite; }
+@keyframes float-y { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+@utility float-y { animation: float-y 4s ease-in-out infinite; }
+@utility float-y-slow { animation: float-y 6s ease-in-out infinite; }
+@keyframes shine { 0% { transform: translateX(-120%) skewX(-20deg) } 60%,100% { transform: translateX(220%) skewX(-20deg) } }
+@utility shine {
+  overflow: hidden;
+  &::after { content: ""; position: absolute; inset: 0; width: 40%; background: linear-gradient(90deg, transparent, oklch(1 0 0 / 45%), transparent); animation: shine 3.5s ease-in-out infinite; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
+@utility rise { animation: rise 0.8s cubic-bezier(.2,.7,.2,1) both; }
 
 @utility soft-shadow {
   box-shadow: 0 1px 2px oklch(0.22 0.02 295 / 4%), 0 12px 40px -12px oklch(0.22 0.02 295 / 12%);
