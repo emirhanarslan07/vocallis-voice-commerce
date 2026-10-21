@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Frontend architecture
+- Keep the landing page's presentation and simulated interactions in the index route; do not imply that client-only demos place calls or persist leads.
+- Use the shared Button component for interactive actions and define visual roles and motion in the global stylesheet so presentation stays consistent.
